@@ -3,105 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Love</title>
-  <link rel="shortcut icon" href="img/favicon.png">
-  <link rel="apple-touch-icon" sizes="192x192" href="img/favicon.png" />
-  <script>
-    /*! modernizr 3.5.0 (Custom Build) | MIT *
-    * https://modernizr.com/download/?-emoji-setclasses !*/
-    !function(e,n,t){function a(e,n){return typeof e===n}function s(){var e,n,t,s,o,i,f;for(var c in r)if(r.hasOwnProperty(c)){if(e=[],n=r[c],n.name&&(e.push(n.name.toLowerCase()),n.options&&n.options.aliases&&n.options.aliases.length))for(t=0;t<n.options.aliases.length;t++)e.push(n.options.aliases[t].toLowerCase());for(s=a(n.fn,"function")?n.fn():n.fn,o=0;o<e.length;o++)i=e[o],f=i.split("."),1===f.length?Modernizr[f[0]]=s:(!Modernizr[f[0]]||Modernizr[f[0]]instanceof Boolean||(Modernizr[f[0]]=new Boolean(Modernizr[f[0]])),Modernizr[f[0]][f[1]]=s),l.push((s?"":"no-")+f.join("-"))}}function o(e){var n=c.className,t=Modernizr._config.classPrefix||"";if(u&&(n=n.baseVal),Modernizr._config.enableJSClass){var a=new RegExp("(^|\\s)"+t+"no-js(\\s|$)");n=n.replace(a,"$1"+t+"js$2")}Modernizr._config.enableClasses&&(n+=" "+t+e.join(" "+t),u?c.className.baseVal=n:c.className=n)}function i(){return"function"!=typeof n.createElement?n.createElement(arguments[0]):u?n.createElementNS.call(n,"http://www.w3.org/2000/svg",arguments[0]):n.createElement.apply(n,arguments)}var l=[],r=[],f={_version:"3.5.0",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,n){var t=this;setTimeout(function(){n(t[e])},0)},addTest:function(e,n,t){r.push({name:e,fn:n,options:t})},addAsyncTest:function(e){r.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=f,Modernizr=new Modernizr;var c=n.documentElement,u="svg"===c.nodeName.toLowerCase();Modernizr.addTest("canvas",function(){var e=i("canvas");return!(!e.getContext||!e.getContext("2d"))}),Modernizr.addTest("canvastext",function(){return Modernizr.canvas===!1?!1:"function"==typeof i("canvas").getContext("2d").fillText}),Modernizr.addTest("emoji",function(){if(!Modernizr.canvastext)return!1;var n=e.devicePixelRatio||1,t=12*n,a=i("canvas"),s=a.getContext("2d");return s.fillStyle="#f00",s.textBaseline="top",s.font="32px Arial",s.fillText("🐨",0,0),0!==s.getImageData(t,t,1,1).data[0]}),s(),o(l),delete f.addTest,delete f.addAsyncTest;for(var d=0;d<Modernizr._q.length;d++)Modernizr._q[d]();e.Modernizr=Modernizr}(window,document);
-  </script>
-  <link rel='stylesheet' type='text/css' href='./style.min.css'/>
-  <style>
-    figcaption, p {
-      font-size: 1rem;
-      line-height: 2;
-      text-align: left;
-    }
-  </style>
-  <script type="text/javascript" src="http://cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js"></script>
+  <title>春节倒计时</title>
   <script type="text/javascript">
-    $youziku.load("body", "8e778b15b3e74031867c71b908c877bd", "RS_XingKai");
-    /*$youziku.load("#id1,.class1,h1", "8e778b15b3e74031867c71b908c877bd", "RS_XingKai");*/
-    /*．．．*/
-    $youziku.draw();
-  </script>
+    function countTime() {
+        var date = new Date();
+        var now = date.getTime();
+        var str = "2021/2/12 00:00:00";
+        var endDate = new Date(str);
+        var end = endDate.getTime();
+        var leftTime = end - now;
+        var d, h, m, s;
+        if (leftTime >= 0) {
+            d = Math.floor(leftTime / 1000 / 60 / 60 / 24);
+            h = Math.floor(leftTime / 1000 / 60 / 60 % 24);
+            m = Math.floor(leftTime / 1000 / 60 % 60);
+            s = Math.floor(leftTime / 1000 % 60);
+        }
+        d = checkTime(d);
+        h = checkTime(h);
+        m = checkTime(m);
+        s = checkTime(s);
+
+        function checkTime(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+        document.getElementById("_d").innerHTML = d;
+        document.getElementById("_h").innerHTML = h;
+        document.getElementById("_m").innerHTML = m;
+        document.getElementById("_s").innerHTML = s;
+        setTimeout(countTime, 1000);
+    }
+</script>
+<style>
+    @font-face {
+        font-family: 'clockicons';
+        src: url('clockicons.ttf') format('truetype');
+    }
+
+    body {
+        background-image: url(./background-image.png);
+        color: rgb(255, 255, 255);
+        font-weight: 500;
+        font-size: 1.5em;
+        font-family: "Microsoft YaHei", 宋体, "Segoe UI", "Lucida Grande", Helvetica, Arial, sans-serif, FreeSans, Arimo;
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .font-digit {
+        font-family: clockicons, sans-serif;
+        font-size: 2em;
+        font-weight: bold;
+    }
+</style>
 </head>
-<body>
-  <div class="loading"><span class="dog emoji emoji--dog">🐶</span><span class="dog emoji emoji--dog">🐶</span><span class="dog emoji emoji--dog">🐶</span><span class="dog emoji emoji--dog">🐶</span><span class="dog emoji emoji--dog">🐶</span></div>
-  <main class="main">
-    <section class="intro">
-      <div class="intro__media">
-        <img data-object-fit src="img/birch1.jpg" id="intro__image--1" class="intro__image"/>
-        <img data-object-fit src="img/birch2.jpg" id="intro__image--2" class="intro__image"/>
-        <img data-object-fit src="img/birch3.jpg" id="intro__image--3" class="intro__image"/>
-        <img data-object-fit src="img/birch4.jpg" id="intro__image--4" class="intro__image"/>
-        <img data-object-fit src="img/birch5.jpg" id="intro__image--5" class="intro__image"/>
-        <img data-object-fit src="img/birch6.jpg" id="intro__image--6" class="intro__image"/>
-        <img data-object-fit src="img/birch7.jpg" id="intro__image--7" class="intro__image"/>
-        <img data-object-fit src="img/birch8.jpg" id="intro__image--8" class="intro__image"/>
-        <img data-object-fit src="img/birch9.jpg" id="intro__image--9" class="intro__image"/>
-        <img data-object-fit src="img/birch10.jpg" id="intro__image--10" class="intro__image"/>
-        <img data-object-fit src="img/birch11.jpg" id="intro__image--11" class="intro__image"/>
-        <img data-object-fit src="img/birch12.jpg" id="intro__image--12" class="intro__image"/>
-        <img data-object-fit src="img/birch13.jpg" id="intro__image--13" class="intro__image"/>
-        <img data-object-fit src="img/birch14.jpg" id="intro__image--14" class="intro__image"/>
-      </div>
-      <div class="intro__container">
-        <div class="intro__item intro__item--1">
-          <div class="intro__trigger"></div>
-          <p>那一天</p> 
-          <p>我闭目在经殿的香雾中</p>
-          <p>蓦然听见你颂经中的真言</p>
-          <p>那一月</p>
-          <p>我摇动所有的经筒</p>
-          <p>不为超度</p>
-          <p>只为触摸你的指尖</p>
-          <p>那一年</p>
-          <p>磕长头匍匐在山路</p>
-          <p>不为觐见</p>
-          <p>只为贴着你的温暖</p>
-          <p>那一世</p>
-          <p>转山转水转佛塔</p>
-          <p>不为修来世</p>
-          <p>只为途中与你相见</p>
-        </div>
-        <div class="intro__item intro__item--2">
-          <p>我多么希望，有一个门口</p>
-          <p>早晨，阳光照在草上</p>
-          <p>我们站着</p>
-          <p>扶着自己的门扇</p>
-          <p>门很低，但太阳是明亮的</p>
-          <p>草在结它的种子</p>
-          <p>风在摇它的叶子</p>
-          <p>我们站着，不说话</p>
-          <p>就十分美好</p>
-        </div>
-        <div class="intro__item intro__item--3">
-          <p>我走过山的时候山不说话</p>
-          <p>我路过海的时候海不说话</p>
-          <p>我坐着的毛驴一步一步滴滴答答</p>
-          <p>我带着的倚天暗哑</p>
-          <p>人们都说我爱着杨过大侠</p>
-          <p>找不到所以在峨眉安家</p>
-          <p>其实我只是爱山中的烟雾</p>
-          <p>像十六岁那年绽放的烟花</p>  
-        </div>
-        <div class="intro__item intro__item--4">
-          <p>我打江南走过</p>
-          <p>那等在季节里的容颜如莲花的开落</p>
-          <p>东风不来，三月的柳絮不飞</p> 
-          <p>你的心如小小的寂寞的城</p> 
-          <p>恰若青石的街道向晚</p> 
-          <p>跫音不响，三月的春帷不揭</p>
-          <p>你的心是小小的窗扉紧掩</p>
-          <p>我达达的马蹄声是美丽的错误</p> 
-          <p>我不是归人，是个过客……</p>
-        <div class="intro__end"></div>
-        </div>
-      </div>
-    </section>
-  </main>
-<script src='./scripts.min.js'></script>
+<body onload="countTime()">
+  <div>
+      <p>农历2021年春节：2021年02月12日 星期五 (辛丑年（牛年）正月初一)</p>
+      <p>距离2021年春节还有：</p>
+      <p><span id="_d" class="font-digit"></span><span>天</span>
+          <span id="_h" class="font-digit"></span><span>时</span>
+          <span id="_m" class="font-digit"></span><span>分</span>
+          <span id="_s" class="font-digit"></span><span>秒</span></p>
+  </div>
 </body>
 </html>
